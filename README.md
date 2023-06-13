@@ -1,6 +1,5 @@
 # BIBLIOTECA
-
-
+ 
 framework: FastApi
 
 Lenguaje: Python
@@ -22,7 +21,23 @@ python -m venv venv
 
 env\Scripts\activate 
 
-#Debes crear un archivo  .env  en el guarda los siguientes valores para la conexion a la DB:
+# uso
+
+Para CREAR un libro existen dos campos: source  y  selfLink:
+
+source  ---> Es la fuente, la DB.
+
+selfLink ---> Este valor es único y esta siendo tomado como el identificador.
+
+Si desea guardar un libro se debe escribir en el campo source:
+
+"internal" para guardar los datos de forma manual.
+"google" para guardar un libro de la (api de google) de forma automatica solo con identificador selfLink.
+
+selfLink este identificador es opcional para "internal" pero es obligatorio para "google".
+
+
+# Debes crear un archivo  .env  en el guarda los siguientes valores para la conexion a la DB:
 
 DB_DRIVER=mysql+pymysql 
 

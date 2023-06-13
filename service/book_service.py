@@ -1,14 +1,9 @@
 from db.entity.books_entity import Book 
 from repository.repo_book import Books_repository
-from repository.storage import GCSImageRepository
-#from repository.firebase import FirebaseImageRepository
 
 class Service_books:
   
-    #repository_storage = FirebaseImageRepository(bucket_name="biblioteca")
-    repository_storage = GCSImageRepository(bucket_name="gs://biblioteca-13e5a.appspot.com")
     repository_book = Books_repository() 
-
 
     def read_books(self, 
                    title: str,
@@ -32,8 +27,7 @@ class Service_books:
                 raise ValueError('selfLink no found')
             else:
 
-                url = self.repository_storage.set_file(book.image, "book/%s-%s" % (book.title, book.author))
-                print(url)
+                #url = self.repository_storage.set_file(book.image, "book/%s-%s" % (book.title, book.author))
                 new_user =  {
                     "title" : book.title,
                     "subtitle" : book.subtitle,
@@ -42,7 +36,7 @@ class Service_books:
                     "publisher" : book.publisher,
                     "publishedDate": book.publishedDate,
                     "description" : book.description,
-                    "image" : url,
+                    "image" : book.image or "",
                     "state": 1
                 }
 

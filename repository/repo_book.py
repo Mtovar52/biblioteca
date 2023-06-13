@@ -85,8 +85,8 @@ class Books_repository:
 #------------------------ CREATE BOOK--------------------------
     def create_book(self, book:Book, source:str, selfLink:str): 
         try:
+            new_book = None
             if source == "internal":
-
                 new_book = books.insert().values(book) 
 
             elif source == "google":
