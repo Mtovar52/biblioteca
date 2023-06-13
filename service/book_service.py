@@ -23,8 +23,8 @@ class Service_books:
             if not all(isinstance(value, str) for value in [book.title, book.subtitle, book.author, book.category, book.publisher, book.description]):
                 raise ValueError('All fields must be strings')
            
-            if selfLink == None:
-                raise ValueError('selfLink no found')
+            if selfLink == None and source=="google":
+                raise ValueError('selfLink not found, google api book requires it.')
             else:
 
                 #url = self.repository_storage.set_file(book.image, "book/%s-%s" % (book.title, book.author))
